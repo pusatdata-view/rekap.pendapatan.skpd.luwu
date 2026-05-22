@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Pendapatan Daerah Kab. Luwu</title>
+    <title>Dashboard Taripang</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -46,7 +46,7 @@
         .kpi-card.red { border-left-color: var(--danger); } /* Warna khusus Piutang */
         
         .kpi-title { font-size: 0.7rem; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-        .kpi-val { font-size: 1.35rem; font-weight: 800; color: var(--text); word-wrap: break-word; line-height: 1.2; letter-spacing: -0.5px; }
+        .kpi-val { font-size: 1.20rem; font-weight: 800; color: var(--text); word-wrap: break-word; line-height: 1.2; letter-spacing: -0.5px; }
         .kpi-sub { font-size: 0.75rem; color: var(--success); margin-top: 8px; font-weight: 600; }
 
         /* CHARTS - SCROLLABLE VERTICAL */
@@ -104,13 +104,27 @@
             .header { flex-direction: column; text-align: center; justify-content: center; }
             .chart-grid { grid-template-columns: 1fr; }
         }
+		
+		/* Style untuk Footer */
+    .footer {
+        text-align: center;
+        padding: 30px 15px;
+        margin-top: 30px;
+        border-top: 1px solid var(--border);
+        color: var(--text-light);
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+		
+		
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header">
         <div class="logo">
-            <h1>Dashboard Laporan Pendapatan SKPD</h1>
+            <h1 style="margin-bottom: 0; line-height: 1;">Dashboard TARIPANG</h1>
+			<p style="font-size: 0.55rem; margin-top: 2px; margin-bottom: 0; color: #94a3b8; line-height: 1;"><i>Tabel Rekonsilasi Online Penerimaan dan Piutang</i></p>
             <p id="dinamisHeader">Pemerintah Kabupaten Luwu</p>
         </div>
         <div class="status" id="syncStatus">
@@ -456,5 +470,11 @@ async function syncData() {
 
 window.addEventListener('DOMContentLoaded', () => { syncData(); setInterval(syncData, SYNC_INTERVAL); });
 </script>
+
+<footer class="footer">
+        <p>&copy; 2026 TARIPANG | Tabel Rekonsilasi Online Penerimaan dan Piutang.</p>
+        <p style="font-size: 0.65rem; margin-top: 2px; color: #94a3b8;">Dikelola oleh : Andi Yustika Manrimawagau Bayan, S.Ak - BKAD Luwu.</p>
+    </footer>
+
 </body>
 </html>
