@@ -73,7 +73,7 @@
         
         .row-detail { display: none; background: #f8fafc; }
         .row-detail.open { display: table-row; }
-        /* EXPANDABLE ROW (AKORDION RINCIAN) - SUDAH DIPRESISI */
+       /* EXPANDABLE ROW (AKORDION RINCIAN) - 100% PRESISI ANTI TABRAKAN */
         .btn-detail { background: var(--primary-bg); color: var(--primary); border: 1px solid #bfdbfe; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
         .btn-detail:hover { background: #dbeafe; }
         .btn-detail svg { width: 14px; height: 14px; transition: transform 0.2s; }
@@ -82,22 +82,22 @@
         
         .row-detail { display: none; background: #f8fafc; }
         .row-detail.open { display: table-row; }
-        .detail-container { padding: 12px; border: 1px dashed #cbd5e1; border-radius: 8px; margin: 4px 0 10px 0; background: #ffffff; }
+        .detail-container { padding: 15px; border: 1px dashed #cbd5e1; border-radius: 8px; margin: 5px 0 10px 0; background: #ffffff; }
         
-        /* Ubah minmax jadi 90px agar kotak lebih rapat dan muat banyak di layar kecil */
-        .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 8px; }
+        /* 1. Ruang Nafas Dikembalikan: minmax diatur ke 110px agar kotak tidak terlalu kurus */
+        .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; }
         
-        /* Padding kotak diperkecil agar lebih padat */
-        .detail-box { text-align: center; padding: 8px 4px; border-radius: 6px; background: #f8fafc; border: 1px solid #e2e8f0; }
+        /* 2. Flexbox Center: Memaksa isi kotak selalu berada di tengah secara simetris, tinggi disamaratakan */
+        .detail-box { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 12px 5px; border-radius: 6px; background: #f8fafc; border: 1px solid #e2e8f0; min-height: 60px; }
         
         .detail-box.empty { background: #fafafa; border: 1px dashed #e2e8f0; }
-        .detail-box.empty .detail-val { color: #cbd5e1; font-weight: 400; }
+        .detail-box.empty .detail-val { color: #94a3b8; font-weight: 500; }
         
-        /* Nama bulan tetap tegas dan tegak */
-        .detail-month { font-size: 0.65rem; color: var(--text-light); font-weight: 700; text-transform: uppercase; margin-bottom: 2px; }
+        /* 3. Bulan: Dibuat lebih tegas dengan sedikit spasi ekstra (letter-spacing) */
+        .detail-month { font-size: 0.65rem; color: var(--text-light); font-weight: 800; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px; }
         
-        /* Angka dibuat miring (italic), ditipiskan (weight 500), dan ukurannya dipaskan */
-        .detail-val { font-size: 0.75rem; font-weight: 500; font-style: italic; color: #334155; letter-spacing: -0.3px; }
+        /* 4. Angka: Tipis, Miring, dan KUNCI ANTI-TABRAKAN (white-space: nowrap) */
+        .detail-val { font-size: 0.8rem; font-weight: 500; font-style: italic; color: #1e293b; white-space: nowrap; }
         .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; display: inline-block; }
         .badge.green { background: var(--success-bg); color: var(--success); }
         .badge.orange { background: var(--warning-bg); color: var(--warning); }
