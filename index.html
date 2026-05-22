@@ -321,7 +321,7 @@ function renderCharts(data) {
     chartBar = new Chart(document.getElementById('barChart').getContext('2d'), {
         type: 'bar', 
         data: { labels: allSkpd.map(d => d.nama), datasets: [
-            { label: 'Total Penerimaan', data: allSkpd.map(d => d.realisasi), backgroundColor: '#2563eb', borderRadius: 4 },
+            { label: 'Total Pendapatan', data: allSkpd.map(d => d.realisasi), backgroundColor: '#2563eb', borderRadius: 4 },
             { label: 'Pagu Anggaran', data: allSkpd.map(d => d.anggaran), backgroundColor: '#cbd5e1', borderRadius: 4 }
         ]},
         options: { 
