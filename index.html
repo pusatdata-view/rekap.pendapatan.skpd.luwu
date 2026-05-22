@@ -28,6 +28,7 @@
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding: 15px; -webkit-font-smoothing: antialiased; }
         .container { max-width: 1400px; margin: 0 auto; }
         
+        /* HEADER - COMPACT */
         .header { background: var(--card); padding: 15px 25px; border-radius: var(--radius); border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; box-shadow: var(--shadow); flex-wrap: wrap; gap: 10px; }
         .logo h1 { font-size: 1.25rem; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; line-height: 1.2; }
         .logo p { font-size: 0.85rem; color: var(--text-light); font-weight: 700; margin-top: 2px; }
@@ -36,15 +37,19 @@
         .dot { width: 8px; height: 8px; background: currentColor; border-radius: 50%; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
-        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 15px; }
+        /* KPI WIDGETS - DITAMBAH KOTAK PIUTANG (MERAH) */
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 15px; }
         .kpi-card { background: var(--card); padding: 15px 20px; border-radius: var(--radius); border: 1px solid var(--border); border-left: 5px solid var(--primary); box-shadow: var(--shadow); }
         .kpi-card.green { border-left-color: var(--success); }
         .kpi-card.purple { border-left-color: #7c3aed; }
         .kpi-card.orange { border-left-color: var(--warning); }
+        .kpi-card.red { border-left-color: var(--danger); } /* Warna khusus Piutang */
+        
         .kpi-title { font-size: 0.7rem; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
         .kpi-val { font-size: 1.35rem; font-weight: 800; color: var(--text); word-wrap: break-word; line-height: 1.2; letter-spacing: -0.5px; }
         .kpi-sub { font-size: 0.75rem; color: var(--success); margin-top: 8px; font-weight: 600; }
 
+        /* CHARTS - SCROLLABLE VERTICAL */
         .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 15px; margin-bottom: 15px; }
         .chart-card { background: var(--card); padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); display: flex; flex-direction: column; }
         .chart-title { font-size: 0.95rem; font-weight: 800; margin-bottom: 15px; color: var(--text); display: flex; align-items: center; gap: 8px; }
@@ -56,24 +61,17 @@
         .chart-scroll-y::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
         .chart-inner { position: relative; width: 100%; }
 
+        /* TABLE - ANTI BERANTAKAN */
         .table-card { background: var(--card); padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
         .table-wrap { overflow-x: auto; max-height: 550px; overflow-y: auto; border: 1px solid var(--border); border-radius: 8px; }
         .table-wrap::-webkit-scrollbar { width: 6px; height: 6px; }
         .table-wrap::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        table { width: 100%; border-collapse: collapse; min-width: 900px; text-align: left; }
+        table { width: 100%; border-collapse: collapse; min-width: 950px; text-align: left; }
         th { background: #f8fafc; padding: 14px 15px; font-size: 0.75rem; font-weight: 800; color: var(--text-light); text-transform: uppercase; position: sticky; top: 0; z-index: 10; box-shadow: 0 1px 0 var(--border); white-space: nowrap; }
         td { padding: 14px 15px; border-bottom: 1px solid var(--border); font-size: 0.85rem; font-weight: 600; color: var(--text); vertical-align: middle; white-space: nowrap; }
         tr:hover td { background: #f8fafc; }
         
-        .btn-detail { background: var(--primary-bg); color: var(--primary); border: 1px solid #bfdbfe; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
-        .btn-detail:hover { background: #dbeafe; }
-        .btn-detail svg { width: 14px; height: 14px; transition: transform 0.2s; }
-        .btn-detail.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-        .btn-detail.active svg { transform: rotate(180deg); }
-        
-        .row-detail { display: none; background: #f8fafc; }
-        .row-detail.open { display: table-row; }
-       /* EXPANDABLE ROW (AKORDION RINCIAN) - 100% PRESISI ANTI TABRAKAN */
+        /* EXPANDABLE ROW (AKORDION RINCIAN) - 100% PRESISI ANTI TABRAKAN */
         .btn-detail { background: var(--primary-bg); color: var(--primary); border: 1px solid #bfdbfe; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
         .btn-detail:hover { background: #dbeafe; }
         .btn-detail svg { width: 14px; height: 14px; transition: transform 0.2s; }
@@ -84,20 +82,16 @@
         .row-detail.open { display: table-row; }
         .detail-container { padding: 15px; border: 1px dashed #cbd5e1; border-radius: 8px; margin: 5px 0 10px 0; background: #ffffff; }
         
-        /* 1. Ruang Nafas Dikembalikan: minmax diatur ke 110px agar kotak tidak terlalu kurus */
+        /* Menggunakan Flexbox & Kunci Nowrap seperti permintaan Bos */
         .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; }
-        
-        /* 2. Flexbox Center: Memaksa isi kotak selalu berada di tengah secara simetris, tinggi disamaratakan */
         .detail-box { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 12px 5px; border-radius: 6px; background: #f8fafc; border: 1px solid #e2e8f0; min-height: 60px; }
-        
         .detail-box.empty { background: #fafafa; border: 1px dashed #e2e8f0; }
         .detail-box.empty .detail-val { color: #94a3b8; font-weight: 500; }
         
-        /* 3. Bulan: Dibuat lebih tegas dengan sedikit spasi ekstra (letter-spacing) */
         .detail-month { font-size: 0.65rem; color: var(--text-light); font-weight: 800; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px; }
-        
-        /* 4. Angka: Tipis, Miring, dan KUNCI ANTI-TABRAKAN (white-space: nowrap) */
         .detail-val { font-size: 0.8rem; font-weight: 500; font-style: italic; color: #1e293b; white-space: nowrap; }
+
+        /* BARS & BADGES */
         .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; display: inline-block; }
         .badge.green { background: var(--success-bg); color: var(--success); }
         .badge.orange { background: var(--warning-bg); color: var(--warning); }
@@ -131,9 +125,14 @@
             <div class="kpi-sub" style="color:var(--text-light);">Target APBD Keseluruhan</div>
         </div>
         <div class="kpi-card green">
-            <div class="kpi-title">Total Nilai Pendapatan Masuk</div>
+            <div class="kpi-title">Total Pendapatan Masuk</div>
             <div class="kpi-val" id="totalRealisasi">Rp 0</div>
             <div class="kpi-sub">Total Pendapatan Saat Ini</div>
+        </div>
+        <div class="kpi-card red">
+            <div class="kpi-title">Total Piutang Daerah</div>
+            <div class="kpi-val" id="totalPiutang">Rp 0</div>
+            <div class="kpi-sub" style="color:var(--danger);">Akumulasi Tunggakan SKPD</div>
         </div>
         <div class="kpi-card purple">
             <div class="kpi-title">Persentase Global</div>
@@ -142,8 +141,8 @@
         </div>
         <div class="kpi-card orange">
             <div class="kpi-title">Peringkat Capaian SKPD</div>
-            <div class="kpi-val" id="topSkpdNama" style="font-size:1.2rem;">-</div>
-            <div class="kpi-sub" id="topSkpdPersen" style="color:var(--warning);">0% Berdasarkan Target Anggaran</div>
+            <div class="kpi-val" id="topSkpdNama" style="font-size:1.15rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">-</div>
+            <div class="kpi-sub" id="topSkpdPersen" style="color:var(--warning);">0% Target Anggaran</div>
         </div>
     </div>
 
@@ -173,13 +172,14 @@
                         <th>NAMA SKPD</th>
                         <th>ANGGARAN (Rp)</th>
                         <th>PENDAPATAN (Rp)</th>
+                        <th>PIUTANG (Rp)</th>
                         <th>CAPAIAN</th>
                         <th>PROGRES</th>
                         <th style="text-align: center;">AKSI</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
-                    <tr><td colspan="6" style="text-align:center; padding: 40px; color: var(--text-light);">Menghubungkan ke database Google Sheets...</td></tr>
+                    <tr><td colspan="7" style="text-align:center; padding: 40px; color: var(--text-light);">Menghubungkan ke database Google Sheets...</td></tr>
                 </tbody>
             </table>
         </div>
@@ -214,14 +214,13 @@ function processCSV(csvText) {
     const lines = csvText.split('\n').filter(l => l.trim() !== '');
     if (lines.length < 2) throw new Error('Data kosong');
     
-    // Fitur Deteksi Koma atau Titik Koma
     let separator = ',';
     if (lines[0].includes(';')) separator = ';';
     const rows = lines.map(line => line.split(separator).map(c => c.trim()));
     
-    // === FITUR AUTO-DETECT TAHUN ANGGARAN ===
-    let tahunAnggaran = "T.A 2026";
-    for (let i = 0; i < Math.min(rows.length, 6); i++) {
+    let tahunSistem = new Date().getFullYear(); 
+    let tahunAnggaran = "T.A " + tahunSistem;
+    for (let i = 0; i < Math.min(rows.length, 10); i++) {
         let barisTeks = rows[i].join(" ").toUpperCase();
         let cariTahun = barisTeks.match(/TA\s*(\d{4})/); 
         if (cariTahun) {
@@ -230,11 +229,11 @@ function processCSV(csvText) {
         }
     }
 
-    // === FITUR AUTO-TRACKING POSISI KOLOM (ANTI ERROR GESER KOLOM) ===
     let headerIdx = -1;
     let colNama = -1;
     let colAnggaran = -1;
     let colBulanMulai = -1;
+    let colPiutang = -1; // Detektor Posisi Piutang
 
     for (let i = 0; i < rows.length; i++) {
         const rowUpper = rows[i].map(c => c.toUpperCase().replace(/\s+/g, ''));
@@ -243,32 +242,53 @@ function processCSV(csvText) {
             headerIdx = i;
             colNama = rowUpper.findIndex(c => c.includes('NAMASKPD'));
             colAnggaran = rowUpper.findIndex(c => c.includes('ANGGARAN'));
-            colBulanMulai = colAnggaran + 1; // Asumsi kolom Januari persis setelah Anggaran
+            colBulanMulai = colAnggaran + 1; 
             break;
         }
     }
     
+    // Mesin pencari khusus kata "PIUTANG" (Cari di sekitar baris Header agar akurat)
+    if (headerIdx !== -1) {
+        for (let i = Math.max(0, headerIdx - 2); i <= Math.min(rows.length - 1, headerIdx + 2); i++) {
+            const idx = rows[i].findIndex(c => {
+                let txt = c.toUpperCase().trim();
+                return txt === 'PIUTANG' || txt === 'TOTAL PIUTANG' || txt === 'NILAI PIUTANG';
+            });
+            if (idx !== -1) {
+                colPiutang = idx;
+                break;
+            }
+        }
+    }
+    
     if (headerIdx === -1 || colNama === -1 || colAnggaran === -1) {
-        throw new Error('Header "NAMA SKPD" atau "ANGGARAN" tidak ditemukan. Pastikan namanya benar di Excel.');
+        throw new Error('Header tidak lengkap. Pastikan ada "NAMA SKPD" dan "ANGGARAN".');
     }
     
     const skpdList = [], monthlyTotals = [0,0,0,0,0,0,0,0,0,0,0,0];
-    let totalAnggaran = 0, totalRealisasi = 0;
+    let totalAnggaran = 0, totalRealisasi = 0, totalPiutangDaerah = 0; // Tambahan wadah piutang
 
     for (let i = headerIdx + 1; i < rows.length; i++) {
         const row = rows[i];
-        if (!row || row.length <= colNama) continue; // Skip jika baris tidak punya cukup kolom
+        if (!row || row.length <= colNama) continue; 
         
         const nama = row[colNama]?.trim();
         if (!nama || nama.toUpperCase() === 'TOTAL' || nama.toUpperCase().startsWith('GRAND')) break;
         
         const anggaran = parseNumberIndonesian(row[colAnggaran]);
-        const skpd = { nama, anggaran, realisasi: 0, persen: 0, bulanan: [] };
+        
+        // Eksekusi penarikan data piutang
+        let piutang = 0;
+        if (colPiutang !== -1 && colPiutang < row.length) {
+            piutang = parseNumberIndonesian(row[colPiutang]);
+        }
+
+        const skpd = { nama, anggaran, realisasi: 0, persen: 0, piutang: piutang, bulanan: [] };
         let realisasi = 0;
         
         for (let b = 0; b < 12; b++) {
             let val = 0;
-            if ((colBulanMulai + b) < row.length) { // Menghindari error jika kolom tidak sampai Desember
+            if ((colBulanMulai + b) < row.length && (colBulanMulai + b) !== colPiutang) { 
                 val = parseNumberIndonesian(row[colBulanMulai + b]);
             }
             skpd.bulanan.push(val); 
@@ -278,12 +298,20 @@ function processCSV(csvText) {
         
         skpd.realisasi = realisasi;
         skpd.persen = anggaran > 0 ? (realisasi / anggaran) * 100 : 0;
-        totalAnggaran += anggaran; totalRealisasi += realisasi;
+        
+        totalAnggaran += anggaran; 
+        totalRealisasi += realisasi;
+        totalPiutangDaerah += piutang; // Jumlahkan piutang ke pusat
+        
         skpdList.push(skpd);
     }
     skpdList.sort((a, b) => b.realisasi - a.realisasi);
     
-    return { skpd: skpdList, tren: monthlyTotals, totalAng: totalAnggaran, totalReal: totalRealisasi, tahunAnggaran: tahunAnggaran };
+    return { 
+        skpd: skpdList, tren: monthlyTotals, 
+        totalAng: totalAnggaran, totalReal: totalRealisasi, 
+        totalPiutang: totalPiutangDaerah, tahunAnggaran: tahunAnggaran 
+    };
 }
 
 function formatRp(n) { return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(n); }
@@ -305,6 +333,9 @@ function updateDashboard(data) {
 
     document.getElementById('totalAnggaran').textContent = formatRp(data.totalAng);
     document.getElementById('totalRealisasi').textContent = formatRp(data.totalReal);
+    // Tampilkan Piutang di Kotak Atas
+    document.getElementById('totalPiutang').textContent = formatRp(data.totalPiutang);
+    
     const persenGlobal = data.totalAng > 0 ? (data.totalReal / data.totalAng * 100) : 0;
     document.getElementById('persenGlobal').textContent = persenGlobal.toFixed(2).replace('.', ',') + '%';
     const top = data.skpd.filter(d => d.anggaran > 0).sort((a,b) => b.persen - a.persen)[0];
@@ -319,10 +350,12 @@ function updateDashboard(data) {
         const barClass = d.persen >= 40 ? 'progress-bar green' : 'progress-bar';
         
         const tr = document.createElement('tr');
+        // Baris Piutang diwarna agak merah bata biar tim pemeriksa gampang bedakan
         tr.innerHTML = `
             <td><strong>${d.nama}</strong></td>
             <td>${formatRp(d.anggaran)}</td>
             <td style="color:#2563eb; font-weight:800;">${formatRp(d.realisasi)}</td>
+            <td style="color:#dc2626; font-weight:700;">${formatRp(d.piutang)}</td>
             <td><span class="${badgeClass}">${d.persen.toFixed(2).replace('.', ',')}%</span></td>
             <td><div class="progress-track"><div class="${barClass}" style="width:0%"></div></div></td>
             <td style="text-align: center;">
@@ -346,7 +379,7 @@ function updateDashboard(data) {
             }
         });
         
-        trDetail.innerHTML = `<td colspan="6" style="padding: 0 15px;"><div class="detail-container"><div style="font-weight:800; font-size:0.8rem; margin-bottom:10px; color:#64748b;">Rincian Berdasarkan Bulan:</div><div class="detail-grid">${detailContent}</div></div></td>`;
+        trDetail.innerHTML = `<td colspan="7" style="padding: 0 15px;"><div class="detail-container"><div style="font-weight:800; font-size:0.8rem; margin-bottom:10px; color:#64748b;">Rincian Berdasarkan Bulan:</div><div class="detail-grid">${detailContent}</div></div></td>`;
         tbody.appendChild(trDetail);
 
         setTimeout(() => { const bar = tr.querySelector('.progress-bar'); if (bar) bar.style.width = Math.min(d.persen, 100) + '%'; }, 100);
