@@ -430,60 +430,27 @@ function renderCharts(data) {
         }
     });
     
-    // ================= LOGIKA BARU: PENDAPATAN MURNI BULANAN (ANTI-BUG) =================
-    // Mendeteksi bulan terakhir yang ada isinya (di atas 0)
     const batasBulan = data.tren.map((v,i) => v>0 ? i : 0).reduce((a,b) => Math.max(a,b), 0);
-    
-    // Potong data dan label secara dinamis hanya sampai bulan aktif saja
-    const labelBln = bulanNama.slice(0, batasBulan + 1);
-    const dataBulananMurni = data.tren.slice(0, batasBulan + 1); 
+    const labelBln = bulanNama.slice(0, Math.max(4, batasBulan+1));
+    let kum = [], ak = 0;
+    for (let i=0; i<=Math.max(3, batasBulan); i++) { ak += (data.tren[i] || 0); kum.push(ak); }
     
     if (chartLine) chartLine.destroy();
     chartLine = new Chart(document.getElementById('lineChart').getContext('2d'), {
-        type: 'line', 
-        data: { 
-            labels: labelBln, 
-            datasets: [{
-                label: 'Pendapatan Riil Bulan Ini', 
-                data: dataBulananMurni, // Menggunakan data murni tanpa rumus akumulasi "+="
-                borderColor: '#059669', 
-                backgroundColor: 'rgba(5, 150, 105, 0.1)',
-                borderWidth: 3, 
-                fill: true, 
-                tension: 0.3, 
-                pointBackgroundColor: '#fff', 
-                pointBorderColor: '#059669', 
-                pointBorderWidth: 2, 
-                pointRadius: 5
-            }]
-        },
+        type: 'line', data: { labels: labelBln, datasets: [{
+            label: 'Akumulasi Realisasi', data: kum, borderColor: '#059669', backgroundColor: 'rgba(5, 150, 105, 0.1)',
+            borderWidth: 3, fill: true, tension: 0.4, pointBackgroundColor: '#fff', pointBorderColor: '#059669', pointBorderWidth: 2, pointRadius: 5
+        }]},
         options: { 
-            responsive: true, 
-            maintainAspectRatio: false,
-            plugins: { 
-                legend: { display: false }, 
-                tooltip: { padding: 12, callbacks: { label: ctx => 'Pendapatan: ' + formatRp(ctx.raw) } } 
-            },
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false }, tooltip: { padding: 12, callbacks: { label: ctx => formatRp(ctx.raw) } } },
             scales: { 
-                y: { 
-                    beginAtZero: true, 
-                    border: { display: false }, 
-                    ticks: { 
-                        // Otomatis konversi teks sumbu Y ke format Miliar (M) atau Juta (Jt) tergantung besar datanya
-                        callback: function(v) {
-                            if (v >= 1e9) return 'Rp ' + (v/1e9).toFixed(1) + ' M';
-                            if (v >= 1e6) return 'Rp ' + (v/1e6).toFixed(0) + ' Jt';
-                            return 'Rp ' + v;
-                        }, 
-                        font: { size: 10, weight: '600' } 
-                    } 
-                },
+                y: { beginAtZero: true, border: { display: false }, ticks: { callback: v => 'Rp ' + (v/1e9).toFixed(0) + 'M', font: { size: 10, weight: '600' } } },
                 x: { grid: { display: false }, ticks: { font: { size: 10, weight: '700' }, color: '#0f172a' } } 
             }
         }
     });
 }
-
 
 function simpleHash(str) { let hash = 0; for (let i = 0; i < str.length; i++) { const char = str.charCodeAt(i); hash = ((hash << 5) - hash) + char; hash |= 0; } return hash; }
 
