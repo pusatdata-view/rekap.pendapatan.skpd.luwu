@@ -115,22 +115,280 @@
         font-size: 0.75rem;
         font-weight: 600;
     }
+	
+	/* ===== FOOTER RESPONSIF ===== */
+.footer {
+    text-align: center;
+    padding: 25px 15px 20px;
+    margin-top: 30px;
+    border-top: 1px solid #e2e8f0;
+    color: #64748b;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.footer-main {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.footer-credit {
+    margin: 4px 0 0 0;
+    font-size: 0.65rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+@media (max-width: 600px) {
+    .footer {
+        padding: 20px 10px 15px;
+        font-size: 0.7rem;
+    }
+    .footer-main {
+        font-size: 0.7rem;
+    }
+    .footer-credit {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .footer {
+        padding: 15px 8px 10px;
+        font-size: 0.65rem;
+    }
+    .footer-main {
+        font-size: 0.65rem;
+    }
+    .footer-credit {
+        font-size: 0.55rem;
+    }
+}
 		
-		
+		/* ===== PRESISI HEADER DENGAN DUA LOGO (RESPONSIVE + PORTRAIT) ===== */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* Container dua logo sejajar */
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;                /* Jarak antar logo */
+    flex-shrink: 0;
+}
+
+/* Style dasar untuk setiap logo */
+.logo-img {
+    max-height: 44px;         /* Desktop default */
+    min-height: 28px;         /* Jaga agar tidak terlalu kecil */
+    width: auto;
+    max-width: 100%;
+    border-radius: 4px;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+}
+
+/* Logo dalam grup mengikuti aturan yang sama */
+.logo-group .logo-img {
+    max-height: 44px;
+    min-height: 28px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.25;
+}
+
+.main-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #2563eb;
+    letter-spacing: -0.5px;
+    margin: 0;
+    line-height: 0.9;
+}
+
+.subtitle {
+    font-size: 0.7rem;
+    font-style: italic;
+    font-weight: 600;
+    color: #64748b;
+    margin: 1px 0 2px 0;
+    letter-spacing: 0.3px;
+    line-height: 1.1;
+}
+
+.gov-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* ===== BREAKPOINT UNTUK SEMUA HP ===== */
+
+/* Tablet & HP landscape (max 768px) */
+@media (max-width: 768px) {
+    .logo-img,
+    .logo-group .logo-img {
+        max-height: 38px;
+        min-height: 24px;
+    }
+    .logo-group {
+        gap: 8px;
+    }
+    .brand {
+        gap: 10px;
+    }
+}
+
+/* HP umum (max 600px) */
+@media (max-width: 600px) {
+    .logo-img,
+    .logo-group .logo-img {
+        max-height: 32px;
+        min-height: 22px;
+    }
+    .logo-group {
+        gap: 6px;
+    }
+    .brand {
+        gap: 8px;
+    }
+    .main-title {
+        font-size: 1.1rem;
+    }
+    .subtitle {
+        font-size: 0.65rem;
+    }
+    .gov-name {
+        font-size: 0.75rem;
+    }
+}
+
+/* HP kecil (max 400px) – iPhone SE, Galaxy S8 */
+@media (max-width: 400px) {
+    .logo-img,
+    .logo-group .logo-img {
+        max-height: 28px;
+        min-height: 20px;
+    }
+    .logo-group {
+        gap: 5px;
+    }
+    .brand {
+        gap: 6px;
+    }
+    .main-title {
+        font-size: 1rem;
+    }
+    .subtitle {
+        font-size: 0.6rem;
+    }
+    .gov-name {
+        font-size: 0.7rem;
+    }
+}
+
+/* HP sangat kecil (max 320px) – iPhone 5, dll */
+@media (max-width: 320px) {
+    .logo-img,
+    .logo-group .logo-img {
+        max-height: 24px;
+        min-height: 18px;
+    }
+    .logo-group {
+        gap: 4px;
+    }
+    .brand {
+        gap: 4px;
+    }
+    .main-title {
+        font-size: 0.9rem;
+    }
+    .subtitle {
+        font-size: 0.55rem;
+    }
+    .gov-name {
+        font-size: 0.65rem;
+    }
+}
+
+/* ===== PORTRAIT MODE – AGAR LOGO TETAP BAGUS ===== */
+@media (orientation: portrait) {
+    .logo-img,
+    .logo-group .logo-img {
+        /* Gunakan viewport height agar lebih besar di layar tinggi */
+        max-height: 7vh;        /* 7% dari tinggi layar */
+        min-height: 30px;       /* Tetap terbaca */
+        width: auto;
+        max-width: 45%;         /* Jangan sampai terlalu lebar */
+    }
+    .logo-group {
+        gap: 8px;
+    }
+}
+
+/* Untuk tablet portrait (lebar > 600px tapi orientasi portrait) */
+@media (min-width: 600px) and (orientation: portrait) {
+    .logo-img,
+    .logo-group .logo-img {
+        max-height: 6vh;
+        min-height: 36px;
+    }
+}
+
+/* ===== PORTRAIT MODE – LOGO & TEKS CENTER ===== */
+@media (orientation: portrait) {
+    .brand {
+        justify-content: center;   /* Pusatkan seluruh brand */
+        text-align: center;        /* Teks ikut rata tengah */
+        gap: 10px;
+    }
+
+    .logo-group {
+        justify-content: center;   /* Dua logo tetap sejajar di tengah */
+    }
+
+    .logo-text {
+        align-items: center;       /* Judul, subtitle, gov-name rata tengah */
+        text-align: center;
+    }
+}
+	
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header">
-        <div class="logo">
-            <h1 style="margin-bottom: 0; line-height: 1;">Dashboard TARIPANG</h1>
-			<p style="font-size: 0.55rem; margin-top: 2px; margin-bottom: 0; color: #94a3b8; line-height: 0.8;"><i>Tabel Rekonsiliasi Online Penerimaan dan Piutang</i></p>
-            <p id="dinamisHeader">Pemerintah Kabupaten Luwu</p>
-        </div>
-        <div class="status" id="syncStatus">
-            <span class="dot"></span> <span id="syncText">Mencari Data Server...</span>
-        </div>
+    <div class="brand">
+    <!-- Container dua logo sejajar -->
+    <div class="logo-group">
+        <img src="img/pemda.png" alt="Logo 1" class="logo-img" />
+        <img src="img/bkad.png" alt="Logo 2" class="logo-img" />
     </div>
+    <div class="logo-text">
+        <h1 class="main-title">Dashboard TARIPANG</h1>
+        <p class="subtitle"><i>Tabel Rekonsiliasi Online Penerimaan dan Piutang.</i></p>
+        <p id="dinamisHeader" class="gov-name">Pemerintah Kabupaten Luwu</p>
+    </div>
+</div>
+    <div class="status" id="syncStatus">
+        <span class="dot"></span> <span id="syncText">Mencari Data Server...</span>
+    </div>
+</div>
 
     <div class="kpi-grid">
         <div class="kpi-card">
@@ -201,7 +459,7 @@
 </div>
 
 <script>
-const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsInPRgpDFG4yFwVHEvuDGwXK-a2z06bBKEHJP2jsnImM2G0ULV52QB9eex2pi4g/pub?output=csv';
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT5xpLoGFUDl4B1Gikt-fnBxYBx0oMqDsxBYC4DmSNjZIE-hgmuUxPSnTLohk6jFxwYqV7NaK9mqvAO/pub?output=csv';
 const SYNC_INTERVAL = 8000;
 const bulanNama = ['JANUARI','FEBRUARI','MARET','APRIL','MEI','JUNI','JULI','AGUSTUS','SEPTEMBER','OKTOBER','NOVEMBER','DESEMBER'];
 
@@ -424,8 +682,24 @@ function renderCharts(data) {
                 tooltip: { padding: 12, callbacks: { label: ctx => ctx.dataset.label + ': ' + formatRp(ctx.raw) } } 
             },
             scales: { 
-                x: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { callback: v => 'Rp ' + (v/1e9).toFixed(0) + 'M', font: { size: 10, weight: '600' } } },
-                y: { grid: { display: false }, ticks: { font: { size: 10, weight: '700' }, color: '#0f172a' } } 
+                x: { beginAtZero: true, grid: { color: '#f1f5f9' }, 
+				ticks: 
+			{ callback: function(value) {
+				if (value >= 1e9) {
+					return 'Rp ' + (value / 1e9).toFixed(1).replace(/\.0$/, '') + ' M';
+				} else if (value >= 1e6) {
+					return 'Rp ' + (value / 1e6).toFixed(0) + ' Jt';
+				} else {
+					return 'Rp ' + (value / 1e3).toFixed(0) + ' Rb';
+				}
+			}, 
+			font: { size: 10, weight: '600' } 
+			} 
+		},
+                y: { 
+				grid: { display: false }, 
+				ticks: { font: { size: 10, weight: '700' }, color: '#0f172a' } 
+				} 
             }
         }
     });
@@ -472,9 +746,9 @@ window.addEventListener('DOMContentLoaded', () => { syncData(); setInterval(sync
 </script>
 
 <footer class="footer">
-        <p>&copy; 2026 TARIPANG | Tabel Rekonsiliasi Online Penerimaan dan Piutang.</p>
-        <p style="font-size: 0.65rem; margin-top: 2px; color: #94a3b8;">Dikelola oleh : Andi Yustika Manrimawagau Bayan, S.Ak - BKAD Luwu.</p>
-    </footer>
+    <p class="footer-main">&copy; 2026 TARIPANG | Tabel Rekonsiliasi Online Penerimaan dan Piutang.</p>
+    <p class="footer-credit">Dikelola oleh : Andi Yustika Manrimawagau Bayan, S.Ak - BKAD Luwu.</p>
+</footer>
 
 </body>
 </html>
