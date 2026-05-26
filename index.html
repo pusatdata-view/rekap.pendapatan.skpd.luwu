@@ -373,6 +373,61 @@
             .footer-main { font-size: 0.65rem; }
             .footer-credit { font-size: 0.55rem; }
         }
+		
+		/* ===== TOMBOL REFRESH ===== */
+.btn-refresh {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    background: var(--primary);
+    color: #fff;
+    border: 1px solid var(--primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.btn-refresh:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    transform: scale(1.03);
+}
+.btn-refresh:active {
+    transform: scale(0.97);
+}
+.btn-refresh:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+/* Animasi rotasi ikon saat loading */
+.btn-refresh.loading svg {
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+/* Responsif: sembunyikan teks di layar kecil, hanya ikon */
+@media (max-width: 600px) {
+    .btn-refresh-text {
+        display: none;
+    }
+    .btn-refresh {
+        padding: 6px 10px;
+        gap: 0;
+    }
+    .btn-refresh svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+		
     </style>
 </head>
 <body>
@@ -389,9 +444,18 @@
                 <p id="dinamisHeader" class="gov-name">Pemerintah Kabupaten Luwu</p>
             </div>
         </div>
-        <div class="status" id="syncStatus">
-            <span class="dot"></span> <span id="syncText">Mencari Data Server...</span>
-        </div>
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;">
+    <div class="status" id="syncStatus">
+        <span class="dot"></span> <span id="syncText">Mencari Data Server...</span>
+    </div>
+    <button id="btnRefresh" class="btn-refresh" title="Perbarui Data Sekarang">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+        </svg>
+        <span class="btn-refresh-text">Refresh</span>
+    </button>
+</div>
     </div>
 
     <div class="kpi-grid">
@@ -731,6 +795,27 @@ async function syncData() {
 }
 
 window.addEventListener('DOMContentLoaded', () => { syncData(); setInterval(syncData, SYNC_INTERVAL); });
+
+// Event listener untuk tombol refresh manual
+document.getElementById('btnRefresh').addEventListener('click', function() {
+    const btn = this;
+    const textEl = document.getElementById('syncText');
+    
+    // Tampilkan animasi loading
+    btn.classList.add('loading');
+    btn.disabled = true;
+    textEl.textContent = 'Memperbarui...';
+    
+    // Panggil syncData langsung
+    syncData().finally(() => {
+        // Kembalikan tombol setelah selesai
+        setTimeout(() => {
+            btn.classList.remove('loading');
+            btn.disabled = false;
+        }, 500);
+    });
+});
+
 </script>
 
 <footer class="footer">
