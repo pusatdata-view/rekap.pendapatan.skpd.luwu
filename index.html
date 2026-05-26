@@ -8,41 +8,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f1f5f9;
-            --card: #ffffff;
-            --text: #0f172a;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-            --primary: #2563eb;
-            --primary-bg: #eff6ff;
-            --success: #059669;
-            --success-bg: #ecfdf5;
-            --warning: #d97706;
-            --warning-bg: #fffbeb;
-            --danger: #dc2626;
-            --danger-bg: #fef2f2;
-            --radius: 12px;
-            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-body { 
-    font-family: 'Inter', sans-serif; 
-    background: var(--bg); 
-    color: var(--text); 
-    padding: 15px; 
-    -webkit-font-smoothing: antialiased; 
-    overflow-x: hidden;        /* 👈 KUNCI: tidak bisa geser kiri-kanan */
-    max-width: 100vw;          /* 👈 Batasi lebar maksimal */
-    position: relative;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --text: #0f172a;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --primary: #2563eb;
+    --primary-bg: #eff6ff;
+    --success: #059669;
+    --success-bg: #ecfdf5;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
 }
-        .container { 
-    max-width: 1400px; 
-    margin: 0 auto; 
-    overflow-x: hidden;        /* 👈 KUNCI: container tidak bocor */
-    width: 100%;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-        
-        /* ===== HEADER ===== */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 15px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+/* ========================= HEADER ========================= */
 .header {
     background: var(--card);
     padding: 15px 25px;
@@ -55,11 +60,11 @@ body {
     box-shadow: var(--shadow);
     flex-wrap: wrap;
     gap: 10px;
-    max-width: 100%;           
-    overflow: hidden;          
+    max-width: 100%;
+    overflow: hidden;
     position: relative;
 }
-/* Garis aksen halus di atas header */
+
 .header::before {
     content: '';
     position: absolute;
@@ -70,7 +75,84 @@ body {
     background: linear-gradient(90deg, var(--primary), #3b82f6, #60a5fa);
     border-radius: 0 0 2px 2px;
 }
-        .status {
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    z-index: 1;
+}
+
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    padding: 4px;
+    background: #f8fafc;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.logo-img {
+    max-height: 42px;
+    min-height: 28px;
+    width: auto;
+    max-width: 100%;
+    border-radius: 4px;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.logo-group .logo-img {
+    max-height: 42px;
+    min-height: 28px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.main-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+    margin: 0;
+    line-height: 1.1;
+    text-shadow: 0 1px 1px rgba(37,99,235,0.05);
+}
+
+.subtitle {
+    font-size: 0.7rem;
+    font-style: italic;
+    font-weight: 500;
+    color: #64748b;
+    margin: 2px 0 3px 0;
+    letter-spacing: 0.2px;
+    line-height: 1.2;
+}
+
+.gov-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #334155;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: 0.1px;
+}
+
+.status {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -84,421 +166,406 @@ body {
     z-index: 1;
     box-shadow: 0 1px 2px rgba(5,150,105,0.08);
 }
-.status.offline { 
-    background: var(--danger-bg); 
-    color: var(--danger); 
-    border-color: #fecaca; 
+
+.status.offline {
+    background: var(--danger-bg);
+    color: var(--danger);
+    border-color: #fecaca;
 }
-        .dot { 
-    width: 7px; 
-    height: 7px; 
-    background: currentColor; 
-    border-radius: 50%; 
-    animation: pulse 1.5s infinite; 
+
+.dot {
+    width: 7px;
+    height: 7px;
+    background: currentColor;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
     box-shadow: 0 0 0 2px rgba(5,150,105,0.2);
 }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
-        /* Brand dengan dua logo */
-        .brand {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    z-index: 1;
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
 }
-        .logo-group {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
-    padding: 4px;
-    background: #f8fafc;
-    border-radius: 8px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+
+/* ===================== KPI WIDGETS ===================== */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
 }
-        .logo-img {
-    max-height: 42px;
-    min-height: 28px;
-    width: auto;
-    max-width: 100%;
-    border-radius: 4px;
-    object-fit: contain;
-    flex-shrink: 0;
-    display: block;
-    transition: transform 0.2s ease;
+
+.kpi-card {
+    background: var(--card);
+    padding: 15px 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--primary);
+    box-shadow: var(--shadow);
 }
-.logo-img:hover {
-    transform: scale(1.05);
-}
-.logo-group .logo-img {
-    max-height: 42px;
-    min-height: 28px;
-}
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            line-height: 1.2;
-        }
-        .main-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary);
-    letter-spacing: -0.5px;
-    margin: 0;
-    line-height: 1.1;
-    text-shadow: 0 1px 1px rgba(37,99,235,0.05);
-}
-        .subtitle {
+
+.kpi-card.green { border-left-color: var(--success); }
+.kpi-card.purple { border-left-color: #7c3aed; }
+.kpi-card.orange { border-left-color: var(--warning); }
+.kpi-card.red { border-left-color: var(--danger); }
+
+.kpi-title {
     font-size: 0.7rem;
-    font-style: italic;
-    font-weight: 500;
-    color: #64748b;
-    margin: 2px 0 3px 0;
-    letter-spacing: 0.2px;
-    line-height: 1.2;
+    font-weight: 800;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
 }
-        .gov-name {
-    font-size: 0.8rem;
+
+.kpi-val {
+    font-size: 1.20rem;
+    font-weight: 800;
+    color: var(--text);
+    word-wrap: break-word;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.kpi-sub {
+    font-size: 0.75rem;
+    color: var(--success);
+    margin-top: 8px;
     font-weight: 600;
-    color: #334155;
-    margin: 0;
-    line-height: 1.2;
-    letter-spacing: 0.1px;
 }
 
-        /* ===== KPI WIDGETS ===== */
-        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 15px; }
-        .kpi-card {
-            background: var(--card);
-            padding: 15px 20px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            border-left: 5px solid var(--primary);
-            box-shadow: var(--shadow);
-        }
-        .kpi-card.green { border-left-color: var(--success); }
-        .kpi-card.purple { border-left-color: #7c3aed; }
-        .kpi-card.orange { border-left-color: var(--warning); }
-        .kpi-card.red { border-left-color: var(--danger); }
-        .kpi-title { font-size: 0.7rem; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-        .kpi-val { font-size: 1.20rem; font-weight: 800; color: var(--text); word-wrap: break-word; line-height: 1.2; letter-spacing: -0.5px; }
-        .kpi-sub { font-size: 0.75rem; color: var(--success); margin-top: 8px; font-weight: 600; }
+/* ===================== CHARTS ===================== */
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
+}
 
-        /* ===== CHARTS ===== */
-        .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 15px; margin-bottom: 15px; }
-        .chart-card {
-            background: var(--card);
-            padding: 20px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden; /* untuk shadow */
-        }
-        .chart-title {
-            font-size: 0.95rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .chart-title::before { content: ''; display: block; width: 10px; height: 10px; border-radius: 50%; background: var(--primary); }
-        .chart-title.green::before { background: var(--success); }
-        
-        /* Area scroll untuk grafik batang */
-        .chart-scroll-y {
-            overflow: auto;        /* auto = muncul scrollbar jika diperlukan (vertikal & horizontal) */
-            flex: 1;
-            max-height: 500px;     /* batas tinggi, bila lebih muncul scroll vertikal */
-            padding-right: 5px;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 10px;
-        }
-        .chart-scroll-y::-webkit-scrollbar { width: 8px; height: 8px; }
-        .chart-scroll-y::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 10px; }
-        .chart-scroll-y::-webkit-scrollbar-track { background: #f1f5f9; }
-        .chart-inner {
+.chart-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chart-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chart-title::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+.chart-title.green::before {
+    background: var(--success);
+}
+
+/* Scroll area grafik batang */
+.chart-scroll-y {
+    overflow: auto;
+    flex: 1;
+    max-height: 500px;
+    padding-right: 5px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 10px;
+}
+
+.chart-scroll-y::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.chart-scroll-y::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 10px;
+}
+
+.chart-scroll-y::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.chart-inner {
     position: relative;
     width: 100%;
-    min-width: 100%;          
+    min-width: 100%;
 }
 
-@media (min-width: 769px) {
-    .chart-inner {
-        min-width: 1500px;   
-    }
+/* Scroll horizontal khusus grafik garis */
+.chart-scroll-x {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
 }
 
-        /* ===== TABEL ===== */
-        .table-card {
-            background: var(--card);
-            padding: 20px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-        }
-        .table-wrap {
+.chart-scroll-x::-webkit-scrollbar {
+    height: 6px;
+}
+
+.chart-scroll-x::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 10px;
+}
+
+.chart-scroll-x::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.chart-inner-line {
+    position: relative;
+    height: 100%;
+}
+
+/* ===================== TABEL ===================== */
+.table-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.table-wrap {
     overflow-x: auto;
     max-height: 550px;
     overflow-y: auto;
     border: 1px solid var(--border);
     border-radius: 8px;
-    max-width: 100%;         
-    -webkit-overflow-scrolling: touch; 
-}
-        .table-wrap::-webkit-scrollbar { width: 6px; height: 6px; }
-        .table-wrap::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        table { width: 100%; border-collapse: collapse; min-width: 950px; text-align: left; }
-        th {
-            background: #f8fafc;
-            padding: 14px 15px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: var(--text-light);
-            text-transform: uppercase;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            box-shadow: 0 1px 0 var(--border);
-            white-space: nowrap;
-        }
-        td {
-            padding: 14px 15px;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text);
-            vertical-align: middle;
-            white-space: nowrap;
-        }
-        tr:hover td { background: #f8fafc; }
-        
-        .btn-detail {
-            background: var(--primary-bg);
-            color: var(--primary);
-            border: 1px solid #bfdbfe;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .btn-detail:hover { background: #dbeafe; }
-        .btn-detail svg { width: 14px; height: 14px; transition: transform 0.2s; }
-        .btn-detail.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-        .btn-detail.active svg { transform: rotate(180deg); }
-        
-        .row-detail { display: none; background: #f8fafc; }
-        .row-detail.open { display: table-row; }
-        .detail-container {
-            padding: 15px;
-            border: 1px dashed #cbd5e1;
-            border-radius: 8px;
-            margin: 5px 0 10px 0;
-            background: #ffffff;
-        }
-        .detail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-            gap: 10px;
-        }
-        .detail-box {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 12px 5px;
-            border-radius: 6px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            min-height: 60px;
-        }
-        .detail-box.empty { background: #fafafa; border: 1px dashed #e2e8f0; }
-        .detail-box.empty .detail-val { color: #94a3b8; font-weight: 500; }
-        .detail-month {
-            font-size: 0.65rem;
-            color: var(--text-light);
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
-        }
-        .detail-val { font-size: 0.8rem; font-weight: 500; font-style: italic; color: #1e293b; white-space: nowrap; }
-
-        .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; display: inline-block; }
-        .badge.green { background: var(--success-bg); color: var(--success); }
-        .badge.orange { background: var(--warning-bg); color: var(--warning); }
-        .badge.red { background: var(--danger-bg); color: var(--danger); }
-        .progress-track { height: 8px; background: #e2e8f0; border-radius: 10px; width: 100%; min-width: 120px; overflow: hidden; }
-        .progress-bar { height: 100%; border-radius: 10px; background: var(--primary); transition: width 1s ease; }
-        .progress-bar.green { background: var(--success); }
-
-        /* ===== RESPONSIVE ===== */
-        /* ===== RESPONSIVE HEADER ===== */
-@media (max-width: 768px) {
-    .header { 
-        padding: 15px 20px; 
-        flex-direction: column; 
-        text-align: center; 
-        justify-content: center; 
-    }
-    .logo-img, .logo-group .logo-img { 
-        max-height: 36px; 
-        min-height: 24px; 
-    }
-    .logo-group { gap: 8px; padding: 3px; }
-    .brand { gap: 12px; justify-content: center; }
-    .main-title { font-size: 1.3rem; }
-    .subtitle { font-size: 0.65rem; }
-    .gov-name { font-size: 0.75rem; }
-    .header::before { height: 2px; }
-}
-@media (max-width: 600px) {
-    .header { padding: 12px 15px; }
-    .logo-img, .logo-group .logo-img { 
-        max-height: 30px; 
-        min-height: 22px; 
-    }
-    .logo-group { gap: 6px; }
-    .brand { gap: 10px; }
-    .main-title { font-size: 1.15rem; }
-    .subtitle { font-size: 0.6rem; }
-    .gov-name { font-size: 0.7rem; }
-}
-@media (max-width: 400px) {
-    .header { padding: 10px 12px; gap: 8px; }
-    .logo-img, .logo-group .logo-img { 
-        max-height: 26px; 
-        min-height: 20px; 
-    }
-    .logo-group { gap: 5px; padding: 2px; }
-    .brand { gap: 8px; }
-    .main-title { font-size: 1rem; }
-    .subtitle { font-size: 0.55rem; }
-    .gov-name { font-size: 0.65rem; }
-    .status { padding: 5px 10px; font-size: 0.65rem; }
-}
-@media (max-width: 320px) {
-    .logo-img, .logo-group .logo-img { 
-        max-height: 22px; 
-        min-height: 18px; 
-    }
-    .logo-group { gap: 4px; }
-    .brand { gap: 6px; }
-    .main-title { font-size: 0.9rem; }
-    .subtitle { font-size: 0.5rem; }
-    .gov-name { font-size: 0.6rem; }
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
-        /* ===== PORTRAIT MODE ===== */
-@media (orientation: portrait) {
-    .brand {
-        justify-content: center;
-        text-align: center;
-        gap: 12px;
-    }
-    .logo-group { justify-content: center; }
-    .logo-text { align-items: center; text-align: center; }
-    .logo-img, .logo-group .logo-img {
-        max-height: 7vh;
-        min-height: 28px;
-        width: auto;
-        max-width: 45%;
-    }
-    .header::before { height: 2px; }
-}
-@media (min-width: 600px) and (orientation: portrait) {
-    .logo-img, .logo-group .logo-img { max-height: 6vh; min-height: 34px; }
+.table-wrap::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
 }
 
-        /* ===== FOOTER PROFESIONAL ===== */
+.table-wrap::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 950px;
+    text-align: left;
+}
+
+th {
+    background: #f8fafc;
+    padding: 14px 15px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--text-light);
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 0 var(--border);
+    white-space: nowrap;
+}
+
+td {
+    padding: 14px 15px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+tr:hover td {
+    background: #f8fafc;
+}
+
+/* ===================== DETAIL & BADGES ===================== */
+.btn-detail {
+    background: var(--primary-bg);
+    color: var(--primary);
+    border: 1px solid #bfdbfe;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-detail:hover {
+    background: #dbeafe;
+}
+
+.btn-detail svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s;
+}
+
+.btn-detail.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+.btn-detail.active svg {
+    transform: rotate(180deg);
+}
+
+.row-detail {
+    display: none;
+    background: #f8fafc;
+}
+
+.row-detail.open {
+    display: table-row;
+}
+
+.detail-container {
+    padding: 15px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    margin: 5px 0 10px 0;
+    background: #ffffff;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px;
+}
+
+.detail-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 12px 5px;
+    border-radius: 6px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    min-height: 60px;
+}
+
+.detail-box.empty {
+    background: #fafafa;
+    border: 1px dashed #e2e8f0;
+}
+
+.detail-box.empty .detail-val {
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.detail-month {
+    font-size: 0.65rem;
+    color: var(--text-light);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.detail-val {
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #1e293b;
+    white-space: nowrap;
+}
+
+.badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: inline-block;
+}
+
+.badge.green {
+    background: var(--success-bg);
+    color: var(--success);
+}
+
+.badge.orange {
+    background: var(--warning-bg);
+    color: var(--warning);
+}
+
+.badge.red {
+    background: var(--danger-bg);
+    color: var(--danger);
+}
+
+.progress-track {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    width: 100%;
+    min-width: 120px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    background: var(--primary);
+    transition: width 1s ease;
+}
+
+.progress-bar.green {
+    background: var(--success);
+}
+
+/* ===================== FOOTER ===================== */
 .footer {
     text-align: center;
-    padding: 30px 20px 25px;
-    margin-top: 35px;
-    border-top: 2px solid #e2e8f0;
-    background: linear-gradient(to bottom, #ffffff, #f8fafc);
-    border-radius: 0 0 12px 12px;
-    position: relative;
-}
-
-/* Garis aksen halus di atas footer */
-.footer::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, #2563eb, #3b82f6);
-    border-radius: 0 0 3px 3px;
+    padding: 25px 15px 20px;
+    margin-top: 30px;
+    border-top: 1px solid #e2e8f0;
+    color: #64748b;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.1;
 }
 
 .footer-main {
-    margin: 0 0 6px 0;
-    font-size: 0.8rem;
-    color: #475569;
+    margin: 0;
+    font-size: 0.75rem;
+    color: #64748b;
     font-weight: 600;
-    letter-spacing: 0.2px;
-    line-height: 1.4;
 }
 
 .footer-credit {
-    margin: 0;
-    font-size: 0.7rem;
+    margin: 4px 0 0 0;
+    font-size: 0.65rem;
     color: #94a3b8;
     font-weight: 500;
-    letter-spacing: 0.1px;
-    line-height: 1.4;
 }
 
-/* ===== RESPONSIVE BREAKPOINTS ===== */
-@media (max-width: 768px) {
-    .footer {
-        padding: 25px 15px 20px;
-        margin-top: 30px;
-    }
-    .footer-main { font-size: 0.75rem; }
-    .footer-credit { font-size: 0.65rem; }
-    .footer::before { width: 50px; }
-}
-
-@media (max-width: 600px) {
-    .footer {
-        padding: 20px 12px 15px;
-        margin-top: 25px;
-    }
-    .footer-main { 
-        font-size: 0.7rem; 
-        margin-bottom: 5px;
-    }
-    .footer-credit { font-size: 0.6rem; }
-    .footer::before { width: 40px; height: 2px; }
-}
-
-@media (max-width: 400px) {
-    .footer {
-        padding: 18px 10px 12px;
-        margin-top: 20px;
-        border-radius: 0 0 8px 8px;
-    }
-    .footer-main { font-size: 0.65rem; }
-    .footer-credit { font-size: 0.55rem; }
-    .footer::before { width: 35px; }
-}
-		
-		/* ===== TOMBOL REFRESH ===== */
+/* ===================== TOMBOL REFRESH ===================== */
 .btn-refresh {
     display: inline-flex;
     align-items: center;
@@ -516,29 +583,96 @@ body {
     white-space: nowrap;
     flex-shrink: 0;
 }
+
 .btn-refresh:hover {
     background: #1d4ed8;
     border-color: #1d4ed8;
     transform: scale(1.03);
 }
+
 .btn-refresh:active {
     transform: scale(0.97);
 }
+
 .btn-refresh:disabled {
     opacity: 0.7;
     cursor: not-allowed;
     transform: none;
 }
-/* Animasi rotasi ikon saat loading */
+
 .btn-refresh.loading svg {
     animation: spin 1s linear infinite;
 }
+
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
-/* Responsif: sembunyikan teks di layar kecil, hanya ikon */
+
+/* ===================== RESPONSIVE BREAKPOINTS ===================== */
+/* Tablet & HP landscape */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+    .chart-grid {
+        grid-template-columns: 1fr;
+    }
+    .logo-img,
+    .logo-group .logo-img {
+        max-height: 36px;
+        min-height: 24px;
+    }
+    .logo-group {
+        gap: 8px;
+        padding: 3px;
+    }
+    .brand {
+        gap: 12px;
+        justify-content: center;
+    }
+    .main-title {
+        font-size: 1.3rem;
+    }
+    .subtitle {
+        font-size: 0.65rem;
+    }
+    .gov-name {
+        font-size: 0.75rem;
+    }
+    .header::before {
+        height: 2px;
+    }
+}
+
+/* HP umum */
 @media (max-width: 600px) {
+    .header {
+        padding: 12px 15px;
+    }
+    .logo-img,
+    .logo-group .logo-img {
+        max-height: 30px;
+        min-height: 22px;
+    }
+    .logo-group {
+        gap: 6px;
+    }
+    .brand {
+        gap: 10px;
+    }
+    .main-title {
+        font-size: 1.15rem;
+    }
+    .subtitle {
+        font-size: 0.6rem;
+    }
+    .gov-name {
+        font-size: 0.7rem;
+    }
     .btn-refresh-text {
         display: none;
     }
@@ -549,6 +683,156 @@ body {
     .btn-refresh svg {
         width: 18px;
         height: 18px;
+    }
+    .footer {
+        padding: 20px 10px 15px;
+        font-size: 0.7rem;
+    }
+    .footer-main {
+        font-size: 0.7rem;
+    }
+    .footer-credit {
+        font-size: 0.6rem;
+    }
+}
+
+/* HP kecil */
+@media (max-width: 400px) {
+    .header {
+        padding: 10px 12px;
+        gap: 8px;
+    }
+    .logo-img,
+    .logo-group .logo-img {
+        max-height: 26px;
+        min-height: 20px;
+    }
+    .logo-group {
+        gap: 5px;
+        padding: 2px;
+    }
+    .brand {
+        gap: 8px;
+    }
+    .main-title {
+        font-size: 1rem;
+    }
+    .subtitle {
+        font-size: 0.55rem;
+    }
+    .gov-name {
+        font-size: 0.65rem;
+    }
+    .status {
+        padding: 5px 10px;
+        font-size: 0.65rem;
+    }
+    .footer {
+        padding: 15px 8px 10px;
+        font-size: 0.65rem;
+    }
+    .footer-main {
+        font-size: 0.65rem;
+    }
+    .footer-credit {
+        font-size: 0.55rem;
+    }
+}
+
+/* HP sangat kecil */
+@media (max-width: 320px) {
+    .logo-img,
+    .logo-group .logo-img {
+        max-height: 22px;
+        min-height: 18px;
+    }
+    .logo-group {
+        gap: 4px;
+    }
+    .brand {
+        gap: 6px;
+    }
+    .main-title {
+        font-size: 0.9rem;
+    }
+    .subtitle {
+        font-size: 0.5rem;
+    }
+    .gov-name {
+        font-size: 0.6rem;
+    }
+}
+
+/* ===================== PORTRAIT MODE ===================== */
+@media (orientation: portrait) {
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+    .container,
+    .header,
+    .kpi-grid,
+    .chart-card,
+    .table-card {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+    .brand {
+        justify-content: center;
+        text-align: center;
+        gap: 12px;
+    }
+    .logo-group {
+        justify-content: center;
+    }
+    .logo-text {
+        align-items: center;
+        text-align: center;
+    }
+    .logo-img,
+    .logo-group .logo-img {
+        max-height: 7vh;
+        min-height: 28px;
+        width: auto;
+        max-width: 45%;
+    }
+    .header::before {
+        height: 2px;
+    }
+    .main-title,
+    .subtitle,
+    .gov-name {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+    .chart-scroll-y,
+    .chart-scroll-x,
+    .table-wrap {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Tablet portrait */
+@media (min-width: 600px) and (orientation: portrait) {
+    .logo-img,
+    .logo-group .logo-img {
+        max-height: 6vh;
+        min-height: 34px;
+    }
+}
+
+/* ===================== DESKTOP: AKTIFKAN SCROLL HORIZONTAL UNTUK GRAFIK ===================== */
+@media (min-width: 769px) {
+    body {
+        overflow-x: auto;
+    }
+    .container {
+        overflow-x: visible;
+    }
+    .chart-inner {
+        min-width: 1500px;
     }
 }
 		
