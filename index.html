@@ -626,6 +626,7 @@ function renderCharts(data) {
             ]
         },
         options: {
+			animation: false,
             indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
@@ -701,6 +702,7 @@ function renderCharts(data) {
             }]
         },
         options: {
+			animation: false,
             responsive: true,
             maintainAspectRatio: false,
             plugins: { legend: { display: false }, tooltip: { padding: 12, callbacks: { label: ctx => formatRp(ctx.raw) } } },
